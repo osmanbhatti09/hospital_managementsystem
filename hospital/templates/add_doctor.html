@@ -1,0 +1,36 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block content  %}
+<div class="container" style="margin-top:50px;">
+    <h2 class="text-center">Add Doctor</h2>
+</div>
+<br><br>
+<form action="" method="post">
+    {% csrf_token %} 
+    <h2 class="text-center display-4">Doctor details </h2>
+   <label>Doctor Name</label>
+   <input type="text" class="form-control" name="uname">
+   <label>Doctor Specialization</label>
+   <input type="text" class="form-control" name="drspecl">
+   <label>Doctor Hospital Name</label>
+   <input type="text" class="form-control" name="drhosptl">
+   <hr>
+   <input type="button" value="submit" class="btn btn-primary">
+</form>
+<!--This code is of javascript-->
+{% if error == "no" %}
+<script>
+    alert('Record save successfully');
+    window.location('{% url 'view_doctor' %}')
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Somthing went wrong,try again');
+</script>
+{% endif %}
+
+
+{% endblock content %}

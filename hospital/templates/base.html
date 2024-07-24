@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}<title>Document</title>  {% endblock title %}
+    <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    {% block content %}
+
+    {% endblock content %}
+
+    <script src="{% static '/js/jquery.js' %}"></script>
+    <script src="{% static '/js/popper.js' %}"></script>
+    <script src="{% static '/js/bootstrap.js' %}"></script>
+
+    <!--Here is CDN **data table for export button from site**  -->
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.min.js"></script>    
+    <!-- End of data table links from html5 export button  -->
+    <!--Jquery codes from sites **Also add id="example add into html table**-->
+     <script>
+        new DataTable('#example', {
+            layout: {
+                topStart: {
+                    buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5']
+                }
+            }
+        });
+     </script>
+     <!--Css Links for exports button-->
+     <link rel="stylesheet"  href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css">
+     <link rel="stylesheet"  href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css">
+</body>
+</html>

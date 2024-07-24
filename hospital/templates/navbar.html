@@ -1,0 +1,44 @@
+{% load static %}
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container">
+<a class="navbar-brand" href="">Hospital Management System</a>
+
+<button class="navbar-toggler" type='button' data-toggle='collapse' data-target='#myMenu'>
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div id="myMenu" class="collapse navbar-collapse">
+    <ul class="navbar-nav text-center ml-auto">
+        {% if not request.user.is_staff %}
+        <li class="nav-item"><a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}"><i class="fa fa-address-book-o" aria-hidden="true"></i> About</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}"><i class="fa fa-address-book" aria-hidden="true"></i> Contact</a></li>
+        {% endif %}
+        {% if request.user.is_staff %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Doctor</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'add_doctor' %}">Add Doctor</a>
+            <a class="dropdown-item" href="{% url 'view_doctor' %}">View Doctor</a> 
+        </div>
+        </li>
+
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Patient</a>
+        <div class="dropdown menu">
+            <a class="dropdown-item" href="{% url 'add_patient' %}">Add Patient</a> 
+        <a class="dropdown-item" href="{% url 'view_patient' %}">view Patient</a>     
+        </div>
+        </li>
+
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Appointment</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'add_appointment' %}">Add Appointment</a> 
+           <a class="dropdown-item" href="{% url 'view_appointment' %}">view Appointments</a>
+        </div>  
+        </li>
+        
+        {% endif %}
+    </ul>
+</div>
+    </div>
+</nav>

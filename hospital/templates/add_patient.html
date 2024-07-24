@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load  static  %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="">Patient Name</label> 
+    <input type="text" name="patient" class="form-control" required>
+    <label for="">Gender</label>
+    <input type="radio" name="gender" value="Male">Male
+    <input type="radio" name="gender" value="Female">Female
+    <label for="">Patient disease</label> 
+    <input type="text" name="dises" class="form-control" required>
+    <label for="">Patient medicines</label> 
+    <input type="text" name="paten" class="form-control" required>   
+    <input type="button" value="submit" class="btn btn-primary">
+</form>
+{% if error == "no" %}
+<script>
+    alert('New Patients has been added successfully')
+    window.location('{% url 'add_patient' %}')
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Somthing went wrong, try again')
+</script>
+{% endif %}
+{% endblock content %}
